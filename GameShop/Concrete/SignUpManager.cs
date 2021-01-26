@@ -15,18 +15,20 @@ namespace GameShop.Concrete
             _customerCheckService = customerCheckService;
         }
 
-        public void CustomerAdd(ICustomer customer)
+        public void CustomerAdd(ICustomer customer, IDatabaseDal databaseDal)
         {
             if (_customerCheckService.ValidatePerson(customer))
             {
                 if (_customerCheckService.ValidateStudentOrAdult(customer))
                 {
                     Console.WriteLine(customer.FirstName + " saved as Student...");
+
                 }
                 else
                 {
                     Console.WriteLine(customer.FirstName + " saved as Adult...");
                 }
+                databaseDal.Add();
 
             }
             else
@@ -35,14 +37,16 @@ namespace GameShop.Concrete
             }
         }
 
-        public void CustomerUpdate(ICustomer customer)
+        public void CustomerUpdate(ICustomer customer, IDatabaseDal databaseDal)
         {
             Console.WriteLine("Customer: " + customer.FirstName + " updated...");
+            databaseDal.Update();
         }
 
-        public void CustomerDelete(ICustomer customer)
+        public void CustomerDelete(ICustomer customer, IDatabaseDal databaseDal)
         {
             Console.WriteLine("Customer: " + customer.FirstName + " deleted...");
+            databaseDal.Delete();
         }
 
     }

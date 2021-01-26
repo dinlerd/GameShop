@@ -6,9 +6,9 @@ namespace GameShop.Abstract
 {
     interface ISignUpManager
     {
-        void CustomerAdd(ICustomer customer);
-        void CustomerUpdate(ICustomer customer);
-        void CustomerDelete(ICustomer customer);
+        void CustomerAdd(ICustomer customer, IDatabaseDal databaseDal);
+        void CustomerUpdate(ICustomer customer, IDatabaseDal databaseDal);
+        void CustomerDelete(ICustomer customer, IDatabaseDal databaseDal);
 
     }
 }
